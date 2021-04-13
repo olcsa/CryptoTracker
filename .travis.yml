@@ -8,3 +8,11 @@ android:
     - extra
     - platform-tools
     - tools
+    - extra-google-googleplayservices
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - addon-google_apis-google-29
+    - sys-img-armeabi-v7a-android-21
+
+    before_install:
+    - yes | sdkmanager "platforms;android-29"
