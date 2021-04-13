@@ -1,8 +1,10 @@
-package com.oliwasi.cryptotracker;
+package com.oliwasi.cryptotracker.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.oliwasi.cryptotracker.R;
 
 public class MainActivity extends AppCompatActivity {
 
