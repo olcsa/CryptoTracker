@@ -11,6 +11,10 @@ public class CurrencyPresenter {
         view.updateCurrency(currency);
     }
 
+    public void AddToFavorites(){
+
+    }
+
     public interface View{
         void updateCurrency(Currency currency);
     }
