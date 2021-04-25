@@ -19,5 +19,6 @@
         </activity>
         <activity android:name=".activities.CurrencyActivity"></activity>
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
