@@ -24,6 +24,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors{
+        full{
+            applicationId "com.oliwasi.cryptotracker.full"
+            versionName "1.0-full"
+        }
+        mock{
+            applicationId "com.oliwasi.cryptotracker.mock"
+            versionName "1.0-mock"
+        }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
