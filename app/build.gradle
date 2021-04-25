@@ -24,14 +24,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "full", "mock"
     productFlavors{
-        full{
-            applicationId "com.oliwasi.cryptotracker.full"
-            versionName "1.0-full"
+        full {
+            applicationIdSuffix ".full"
+            versionNameSuffix "-full"
+            dimension "full"
         }
         mock{
-            applicationId "com.oliwasi.cryptotracker.mock"
-            versionName "1.0-mock"
+            applicationIdSuffix ".mock"
+            versionNameSuffix "-mock"
+            dimension "mock"
         }
     }
     compileOptions {
@@ -43,7 +46,7 @@ android {
 dependencies {
     def room_version = "2.3.0"
     implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
