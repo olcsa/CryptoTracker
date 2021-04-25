@@ -24,17 +24,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    flavorDimensions "full", "mock"
+    flavorDimensions "version"
     productFlavors{
         full {
             applicationIdSuffix ".full"
             versionNameSuffix "-full"
-            dimension "full"
+            dimension "version"
         }
         mock{
             applicationIdSuffix ".mock"
             versionNameSuffix "-mock"
-            dimension "mock"
+            dimension "version"
         }
     }
     compileOptions {
