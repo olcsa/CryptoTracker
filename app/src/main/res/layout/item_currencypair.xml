@@ -27,14 +27,14 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/currencyPair_price"
+        android:id="@+id/favorite_lowest"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         />
 
     <Button
-        android:id="@+id/button_addToFavorites"
+        android:id="@+id/button_deleteFavorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="16dp"

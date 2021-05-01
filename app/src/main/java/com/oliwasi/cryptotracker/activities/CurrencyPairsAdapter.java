@@ -68,8 +68,8 @@ public class CurrencyPairsAdapter extends RecyclerView.Adapter<CurrencyPairsAdap
             super(itemView);
 
             currencyPairText = (TextView) itemView.findViewById(R.id.currencyPair_name);
-            priceText = (TextView) itemView.findViewById(R.id.currencyPair_price);
-            addFavoritesButton = (Button) itemView.findViewById(R.id.button_addToFavorites);
+            priceText = (TextView) itemView.findViewById(R.id.favorite_lowest);
+            addFavoritesButton = (Button) itemView.findViewById(R.id.button_deleteFavorite);
         }
     }
 }

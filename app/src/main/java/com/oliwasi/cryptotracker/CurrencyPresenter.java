@@ -35,11 +35,6 @@ public class CurrencyPresenter {
         this.repository = repository;
     }
 
-    public void loadCurrency(Currency currency){
-        //TODO
-        view.updateCurrency(currency);
-    }
-
     public void loadCurrencyPairs(){
         Disposable d = repository.getCurrencyPairs()
                 .subscribeOn(Schedulers.io())
@@ -68,7 +63,7 @@ public class CurrencyPresenter {
         favorite.id = pair.getId();
         favorite.primaryCurrency = pair.getPrimaryCurrency();
         favorite.secondaryCurrency = pair.getSecondaryCurrency();
-        //repository.insertFavorite(favorite);
+        repository.insertFavorite(favorite);
     }
 
     public void setCurrency(Currency currency) {
