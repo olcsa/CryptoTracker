@@ -4,10 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.oliwasi.cryptotracker.R;
-import com.oliwasi.cryptotracker.activities.ui.currencies.CurrenciesAdapter;
 import com.oliwasi.cryptotracker.model.CurrencyPair;
 
 import java.util.List;
@@ -41,8 +41,8 @@ public class CurrencyPairsAdapter extends RecyclerView.Adapter<CurrencyPairsAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CurrencyPair pair = currencyPairs.get(position);
 
-        TextView textView = holder.currencyPairText;
-        textView.setText(pair.getPrimaryCurrency() + " - " + pair.getSecondaryCurrency());
+        holder.currencyPairText.setText(pair.getPrimaryCurrency() + " - " + pair.getSecondaryCurrency());
+        holder.priceText.setText(pair.getLast());
     }
 
     @Override
@@ -52,12 +52,15 @@ public class CurrencyPairsAdapter extends RecyclerView.Adapter<CurrencyPairsAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView currencyPairText;
-        public TextView lastPriceText;
+        public TextView priceText;
+        public Button addFavoritesButton;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             currencyPairText = (TextView) itemView.findViewById(R.id.currencyPair_name);
+            priceText = (TextView) itemView.findViewById(R.id.currencyPair_price);
+            addFavoritesButton = (Button) itemView.findViewById(R.id.button_addToFavorites);
         }
     }
 }
