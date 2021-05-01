@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.oliwasi.cryptotracker.CurrencyPresenter;
 import com.oliwasi.cryptotracker.R;
 import com.oliwasi.cryptotracker.model.CurrencyPair;
 
@@ -18,9 +19,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class CurrencyPairsAdapter extends RecyclerView.Adapter<CurrencyPairsAdapter.ViewHolder> {
 
     private List<CurrencyPair> currencyPairs;
+    private CurrencyPresenter presenter;
 
-    public CurrencyPairsAdapter(List<CurrencyPair> currencyPairs){
+    public CurrencyPairsAdapter(List<CurrencyPair> currencyPairs, CurrencyPresenter presenter){
         this.currencyPairs = currencyPairs;
+        this.presenter = presenter;
     }
 
     @NonNull
@@ -43,6 +46,12 @@ public class CurrencyPairsAdapter extends RecyclerView.Adapter<CurrencyPairsAdap
 
         holder.currencyPairText.setText(pair.getPrimaryCurrency() + " - " + pair.getSecondaryCurrency());
         holder.priceText.setText(pair.getLast());
+        holder.addFavoritesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.AddToFavorites(pair);
+            }
+        });
     }
 
     @Override

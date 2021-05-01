@@ -4,6 +4,7 @@ import com.oliwasi.cryptotracker.activities.CurrencyPairsAdapter;
 import com.oliwasi.cryptotracker.model.Currency;
 import com.oliwasi.cryptotracker.model.CurrencyPair;
 import com.oliwasi.cryptotracker.model.CurrencyPairList;
+import com.oliwasi.cryptotracker.model.Favorite;
 import com.oliwasi.cryptotracker.repository.CryptoRepository;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class CurrencyPresenter {
 
     @Inject
     public CurrencyPresenter(){
-        adapter = new CurrencyPairsAdapter(currencyPairs);
+        adapter = new CurrencyPairsAdapter(currencyPairs, this);
     }
 
     public void setRepository(CryptoRepository repository){
@@ -62,8 +63,12 @@ public class CurrencyPresenter {
                 });
     }
 
-    public void AddToFavorites(){
-
+    public void AddToFavorites(CurrencyPair pair){
+        Favorite favorite = new Favorite();
+        favorite.id = pair.getId();
+        favorite.primaryCurrency = pair.getPrimaryCurrency();
+        favorite.secondaryCurrency = pair.getSecondaryCurrency();
+        //repository.insertFavorite(favorite);
     }
 
     public void setCurrency(Currency currency) {
