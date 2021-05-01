@@ -47,10 +47,12 @@ public class CurrenciesViewModel extends ViewModel {
 
                             Currency currency = currencyList.get(key);
                             assert currency != null;
-                            currency.setShortName(key);
-                            currencies.add(currency);
+                            if (currency.getDelisted() == 0){
+                                currency.setShortName(key);
+                                currencies.add(currency);
 
-                            adapter.notifyItemInserted(currencies.size() - 1);
+                                adapter.notifyItemInserted(currencies.size() - 1);
+                            }
                         }
                     }
                 });
