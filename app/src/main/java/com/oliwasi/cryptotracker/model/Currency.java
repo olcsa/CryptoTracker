@@ -12,6 +12,7 @@
 
 package com.oliwasi.cryptotracker.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import com.google.gson.annotations.SerializedName;
@@ -21,13 +22,14 @@ import java.math.BigDecimal;
  * Currency
  */
 
-public class Currency {
+public class Currency implements Serializable {
   @SerializedName("id")
   private Integer id = null;
 
   @SerializedName("name")
   private String name = null;
 
+  @SerializedName("shortName")
   private String shortName;
 
   @SerializedName("txFee")
@@ -84,7 +86,7 @@ public class Currency {
   }
 
   public void setShortName(String name) {
-    this.shortName = shortName;
+    this.shortName = name;
   }
 
   public Currency txFee(BigDecimal txFee) {

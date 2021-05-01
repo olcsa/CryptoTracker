@@ -17,7 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.CurrencyActivity"></activity>
+        <activity
+            android:name=".activities.CurrencyActivity"
+            android:label="Currency" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 
