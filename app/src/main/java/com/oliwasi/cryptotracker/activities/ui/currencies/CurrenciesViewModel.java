@@ -25,7 +25,7 @@ public class CurrenciesViewModel extends ViewModel {
 
     public CurrenciesAdapter adapter;
 
-    private ArrayList<Currency> currencies = new ArrayList<>();
+    private final ArrayList<Currency> currencies = new ArrayList<>();
 
     @Inject
     public CurrenciesViewModel() {
@@ -44,7 +44,12 @@ public class CurrenciesViewModel extends ViewModel {
                     @Override
                     public void accept(CurrencyList currencyList) throws Exception {
                         for (String key: currencyList.keySet()) {
-                            currencies.add(currencyList.get(key));
+
+                            Currency currency = currencyList.get(key);
+                            assert currency != null;
+                            currency.setShortName(key);
+                            currencies.add(currency);
+
                             adapter.notifyItemInserted(currencies.size() - 1);
                         }
                     }

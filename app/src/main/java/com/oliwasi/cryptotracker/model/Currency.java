@@ -28,6 +28,8 @@ public class Currency {
   @SerializedName("name")
   private String name = null;
 
+  private String shortName;
+
   @SerializedName("txFee")
   private BigDecimal txFee = null;
 
@@ -75,6 +77,14 @@ public class Currency {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public String getShortName() {
+    return shortName;
+  }
+
+  public void setShortName(String name) {
+    this.shortName = shortName;
   }
 
   public Currency txFee(BigDecimal txFee) {
