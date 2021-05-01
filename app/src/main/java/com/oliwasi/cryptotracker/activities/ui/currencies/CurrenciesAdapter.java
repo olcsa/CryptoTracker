@@ -1,6 +1,7 @@
 package com.oliwasi.cryptotracker.activities.ui.currencies;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.oliwasi.cryptotracker.R;
+import com.oliwasi.cryptotracker.activities.CurrencyActivity;
 import com.oliwasi.cryptotracker.model.Currency;
 
 import java.util.List;
@@ -44,6 +46,14 @@ public class CurrenciesAdapter extends RecyclerView.Adapter<CurrenciesAdapter.Vi
         TextView textView = holder.currencyNameText;
         textView.setText(currency.getName());
         Button button = holder.button;
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), CurrencyActivity.class);
+                intent.putExtra("currency", currency);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
