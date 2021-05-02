@@ -24,6 +24,10 @@ public class CurrencyPair {
   @SerializedName("id")
   private Integer id = null;
 
+  private String primaryCurrency;
+
+  private String secondaryCurrency;
+
   @SerializedName("last")
   private String last = null;
 
@@ -279,4 +283,19 @@ public class CurrencyPair {
     return o.toString().replace("\n", "\n    ");
   }
 
+  public String getPrimaryCurrency() {
+    return primaryCurrency;
+  }
+
+  public void setPrimaryCurrency(String primaryCurrency) {
+    this.primaryCurrency = primaryCurrency;
+  }
+
+  public String getSecondaryCurrency() {
+    return secondaryCurrency;
+  }
+
+  public void setSecondaryCurrency(String secondaryCurrency) {
+    this.secondaryCurrency = secondaryCurrency;
+  }
 }

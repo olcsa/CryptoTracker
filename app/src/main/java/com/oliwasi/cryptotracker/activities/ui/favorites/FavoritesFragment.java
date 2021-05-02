@@ -11,12 +11,20 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import dagger.hilt.android.AndroidEntryPoint;
 
 import com.oliwasi.cryptotracker.R;
+import com.oliwasi.cryptotracker.repository.CryptoRepository;
+
+import javax.inject.Inject;
 
 @AndroidEntryPoint
 public class FavoritesFragment extends Fragment {
+
+    @Inject
+    CryptoRepository repository;
 
     private FavoritesViewModel favoritesViewModel;
 
@@ -24,14 +32,17 @@ public class FavoritesFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         favoritesViewModel =
                 new ViewModelProvider(this).get(FavoritesViewModel.class);
+        favoritesViewModel.setRepository(repository);
+
         View root = inflater.inflate(R.layout.fragment_favorites, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-        favoritesViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
+        RecyclerView rvCurrencies = (RecyclerView) root.findViewById(R.id.rvFavorites);
+        rvCurrencies.setLayoutManager(new LinearLayoutManager(root.getContext()));
+        rvCurrencies.setHasFixedSize(true);
+        rvCurrencies.setAdapter(favoritesViewModel.adapter);
+
+        favoritesViewModel.loadFavorites();
+
         return root;
     }
 }

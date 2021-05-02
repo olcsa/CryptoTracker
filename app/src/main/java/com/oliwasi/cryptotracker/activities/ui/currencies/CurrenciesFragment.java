@@ -4,19 +4,24 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import dagger.hilt.android.AndroidEntryPoint;
 
 import com.oliwasi.cryptotracker.R;
+import com.oliwasi.cryptotracker.repository.CryptoRepository;
+
+import javax.inject.Inject;
 
 @AndroidEntryPoint
 public class CurrenciesFragment extends Fragment {
+
+    @Inject
+    CryptoRepository repository;
 
     private CurrenciesViewModel currenciesViewModel;
 
@@ -24,14 +29,16 @@ public class CurrenciesFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         currenciesViewModel =
                 new ViewModelProvider(this).get(CurrenciesViewModel.class);
+        currenciesViewModel.setRepository(repository);
         View root = inflater.inflate(R.layout.fragment_currencies, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        currenciesViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
+        RecyclerView rvCurrencies = (RecyclerView) root.findViewById(R.id.rvCurrencies);
+        rvCurrencies.setLayoutManager(new LinearLayoutManager(root.getContext()));
+        rvCurrencies.setHasFixedSize(true);
+        rvCurrencies.setAdapter(currenciesViewModel.adapter);
+
+        currenciesViewModel.loadCurrencies();
+
         return root;
     }
 }
