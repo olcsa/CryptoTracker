@@ -7,6 +7,9 @@ import dagger.hilt.android.AndroidEntryPoint;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.oliwasi.cryptotracker.CurrencyPresenter;
@@ -49,6 +52,22 @@ public class CurrencyActivity extends AppCompatActivity implements CurrencyPrese
         rvCurrencyPairs.setAdapter(presenter.adapter);
 
         presenter.loadCurrencyPairs();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.crash_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.crash_menu_item:
+                throw new RuntimeException("Crashlytics test crash!");
+        }
+        return true;
     }
 
     private void initView(){
