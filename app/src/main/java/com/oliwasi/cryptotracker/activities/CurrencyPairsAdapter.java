@@ -1,12 +1,14 @@
 package com.oliwasi.cryptotracker.activities;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.oliwasi.cryptotracker.CurrencyPresenter;
 import com.oliwasi.cryptotracker.R;
 import com.oliwasi.cryptotracker.model.CurrencyPair;
@@ -20,6 +22,8 @@ public class CurrencyPairsAdapter extends RecyclerView.Adapter<CurrencyPairsAdap
 
     private List<CurrencyPair> currencyPairs;
     private CurrencyPresenter presenter;
+
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     public CurrencyPairsAdapter(List<CurrencyPair> currencyPairs, CurrencyPresenter presenter){
         this.currencyPairs = currencyPairs;
@@ -37,6 +41,9 @@ public class CurrencyPairsAdapter extends RecyclerView.Adapter<CurrencyPairsAdap
 
         // Return a new holder instance
         CurrencyPairsAdapter.ViewHolder viewHolder = new CurrencyPairsAdapter.ViewHolder(contactView);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
+
         return viewHolder;
     }
 
@@ -50,6 +57,9 @@ public class CurrencyPairsAdapter extends RecyclerView.Adapter<CurrencyPairsAdap
             @Override
             public void onClick(View view) {
                 presenter.AddToFavorites(pair);
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, pair.getPrimaryCurrency() + "_" + pair.getSecondaryCurrency());
+                mFirebaseAnalytics.logEvent("add_favorite", bundle);
             }
         });
     }

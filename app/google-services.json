@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "744715890722",
+    "project_id": "cryptotracker-5f5db",
+    "storage_bucket": "cryptotracker-5f5db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744715890722:android:7f5a1bb4733dafbd761a7b",
+        "android_client_info": {
+          "package_name": "com.oliwasi.cryptotracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744715890722-vidfpmbc6vug2qj8up2p9cn57m0k5obp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArvdTALAacg9c8_PPtJQ3Pd4P2QST0fiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744715890722-vidfpmbc6vug2qj8up2p9cn57m0k5obp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
